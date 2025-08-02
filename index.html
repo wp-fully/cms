@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amer Outlet CMS</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #222;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #cba92f;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .datetime {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: normal;
+      color: #fff;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background-color: #cba92f;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 17px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background-color: #a88d27;
+    }
+
+    .box {
+      background-color: #f9f9f9;
+      padding: 25px;
+      border-radius: 12px;
+      margin: auto;
+      max-width: 650px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .box h2 {
+      margin-bottom: 15px;
+      color: #cba92f;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .box ul {
+      list-style: none;
+      padding-right: 0;
+    }
+
+    .box ul li {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .important-links {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .important-links a {
+      display: inline-block;
+      margin: 10px 20px;
+      color: #cba92f;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border: 1px solid #cba92f;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .important-links a:hover {
+      background-color: #cba92f;
+      color: white;
+    }
+.lock-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(25px);
+  background-color: rgba(0,0,0,0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+}
+
+.lock-box h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+}
+
+.lock-box input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.lock-box button {
+  background-color: #cba92f;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.lock-box button:hover {
+  background-color: #a88d27;
+}
+
+#errorText {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+    @media (max-width: 600px) {
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .important-links a {
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+      }
+
+      .datetime {
+        position: static;
+        margin-top: 10px;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div id="lockScreen" class="lock-screen">
+  <div class="lock-box">
+    <h2>ادخل كلمة المرور</h2>
+    <input type="password" id="passwordInput" placeholder="كلمة المرور">
+    <button onclick="checkPassword()">دخول</button>
+    <p id="errorText"></p>
+  </div>
+</div>
+
+
+  <header>
+    Amer Outlet
+    <div class="datetime" id="datetime"></div>
+  </header>
+
+  <div class="buttons">
+    <a href="https://docs.google.com/spreadsheets/d/1qAUdEfsk9GRRVu6qQPSvotxAuG_hupIj/edit?gid=1813946621#gid=1813946621" target="_blank">
+     شيت متابعة الطلبات 
+    </a>
+  </div>
+
+  <div class="box">
+    <h2>التصنيفات</h2>
+    <ul>
+      <li>أطقم الشاي والقهوة</li>
+      <li>طفايات السجائر</li>
+      <li>علب المناديل</li>
+    </ul>
+  </div>
+
+  <div class="important-links">
+    <a href="https://east2global.com/" target="_blank">المخزن east2global</a>
+    <a href="https://ameroutlet.com/" target="_blank">المتجر ameroutlet</a>
+  </div>
+
+  <script>
+    // ترجمة أيام الأسبوع للعربي
+    const daysAr = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+
+    function updateDateTime() {
+      const now = new Date();
+      const dayName = daysAr[now.getDay()];
+      const date = now.toLocaleDateString('ar-EG');
+      const time = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById("datetime").textContent = `${dayName} - ${date} - ${time}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // منع كليك يمين
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // منع اختصارات Dev Tools
+    document.onkeydown = function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C" || e.key === "J")) ||
+        (e.ctrlKey && e.key === "U")
+      ) {
+        return false;
+      }
+    };
+
+    // محاولة اكتشاف أدوات الفحص
+    setInterval(function () {
+      const before = new Date().getTime();
+      debugger;
+      const after = new Date().getTime();
+      if (after - before > 200) {
+        window.location.href = "about:blank";
+      }
+    }, 2000);
+
+
+
+    window.onload = function () {
+  const accessGranted = localStorage.getItem("access_granted");
+
+  if (accessGranted !== "true") {
+    document.getElementById("lockScreen").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  } else {
+    document.getElementById("lockScreen").style.display = "none";
+  }
+};
+
+function checkPassword() {
+  const pass = document.getElementById("passwordInput").value;
+  const errorText = document.getElementById("errorText");
+
+  if (pass === "112233") {
+    localStorage.setItem("access_granted", "true");
+    document.getElementById("lockScreen").style.display = "none";
+    document.body.style.overflow = "auto";
+  } else {
+    errorText.textContent = "كلمة المرور غير صحيحة!";
+  }
+}
+
+  </script>
+
+</body>
+</html>
